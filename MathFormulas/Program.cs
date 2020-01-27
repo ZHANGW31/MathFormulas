@@ -128,6 +128,13 @@ namespace MathFormulas
                     fromUser = Console.ReadLine();
                     continue;
                 }
+                if (output == 0)
+                {
+                    Console.WriteLine("{0} is not a right choice", fromUser);
+                    Console.WriteLine("Please enter a valid value");
+                    fromUser = Console.ReadLine();
+                    continue;
+                }
                 else
                 {
                     isValid = true;
