@@ -58,9 +58,9 @@ namespace MathFormulas
                     QuadraticFormula(valueA, valueB, valueC);
                 }
 
-            } catch (Exception)
+            } catch (Exception exceptionMessage)
             {
-                Console.WriteLine("An unexpected error has occured!");
+                Console.WriteLine(exceptionMessage);
             }
             finally
             {
@@ -75,32 +75,36 @@ namespace MathFormulas
             int output = 0;
             while (isValid == false)
             {
-                if (!int.TryParse(fromUser, out output))
+                checked
                 {
-                    Console.WriteLine("{0} is not a valid input", fromUser);
-                    Console.WriteLine("Please enter a valid value");
-                    fromUser = Console.ReadLine();
-                    continue;
-                }
+                    if (!int.TryParse(fromUser, out output))
+                    {
+                        Console.WriteLine("{0} is not a valid input", fromUser);
+                        Console.WriteLine("Please enter a valid value");
+                        fromUser = Console.ReadLine();
+                        continue;
+                    }
 
-                if(output > 4)
-                {
-                    Console.WriteLine("{0} is not a right choice", fromUser);
-                    Console.WriteLine("Please enter a valid value");
-                    fromUser = Console.ReadLine();
-                    continue;
-                }
-                if (output == 0)
-                {
-                    Console.WriteLine("{0} is not a right choice", fromUser);
-                    Console.WriteLine("Please enter a valid value");
-                    fromUser = Console.ReadLine();
-                    continue;
-                }
-                else
-                {
+                    if (output > 4)
+                    {
+                        Console.WriteLine("{0} is not a right choice", fromUser);
+                        Console.WriteLine("Please enter a valid value");
+                        fromUser = Console.ReadLine();
+                        continue;
+                    }
+                    if (output == 0)
+                    {
+                        Console.WriteLine("{0} is not a right choice", fromUser);
+                        Console.WriteLine("Please enter a valid value");
+                        fromUser = Console.ReadLine();
+                        continue;
 
-                    isValid = true;
+                    }
+                    else
+                    {
+
+                        isValid = true;
+                    }
                 }
             }
             return output;
@@ -191,12 +195,29 @@ namespace MathFormulas
         {
             checked
             {
-                double positive_num = ((double)b * -1.0) + Math.Sqrt(Math.Pow((double)b, 2) - 4.0 * (double)a * (double)c);
-                double negative_num = ((double)b * -1.0) - Math.Sqrt(Math.Pow((double)b, 2) - 4.0 * (double)a * (double)c);
-                double denominator = 2.0 * (double)a;
-                Console.WriteLine($"\nThe positive solution is {positive_num / denominator}");
-                Console.WriteLine($"\nThe negative solution is {negative_num / denominator}");
-                return positive_num;
+                var inTheSquareRoot = Math.Pow((double)b, 2) + (-4.0 * (double)a * (double)c);
+
+               
+                    if (inTheSquareRoot < 0)
+                    {
+                        Console.WriteLine("There are no real solutions");
+                    }
+                    else
+                    {
+
+                        double positive_num = ((double)-b) + Math.Sqrt(inTheSquareRoot);
+                        double negative_num = ((double)-b) - Math.Sqrt(inTheSquareRoot);
+                        double denominator = 2.0 * (double)a;
+                        var postiveAns = positive_num / denominator;
+                        var negativeAns = negative_num / denominator;
+
+
+                        Console.WriteLine($"\nThe positive solution is {postiveAns}");
+                        Console.WriteLine($"\nThe negative solution is {negativeAns}");
+
+                    }
+                
+                return a;
             }
         }
 
