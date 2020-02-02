@@ -4,8 +4,6 @@ namespace MathFormulas
 {
     using System;
 
-
-
     class Program
     {
         static void Main(string[] args)
@@ -84,7 +82,6 @@ namespace MathFormulas
                         fromUser = Console.ReadLine();
                         continue;
                     }
-
                     if (output > 4)
                     {
                         Console.WriteLine("{0} is not a right choice", fromUser);
@@ -98,11 +95,9 @@ namespace MathFormulas
                         Console.WriteLine("Please enter a valid value");
                         fromUser = Console.ReadLine();
                         continue;
-
                     }
                     else
                     {
-
                         isValid = true;
                     }
                 }
@@ -125,17 +120,10 @@ namespace MathFormulas
                     fromUser = Console.ReadLine();
                     continue;
                 }
-                if(output < 0)
+                if(output <= 0)
                 {
                     Console.WriteLine("{0} is not a valid integer", fromUser);
                     Console.WriteLine("Please enter a valid value!");
-                    fromUser = Console.ReadLine();
-                    continue;
-                }
-                if (output == 0)
-                {
-                    Console.WriteLine("{0} is not a right choice", fromUser);
-                    Console.WriteLine("Please enter a valid value");
                     fromUser = Console.ReadLine();
                     continue;
                 }
@@ -168,60 +156,43 @@ namespace MathFormulas
         {
             checked
             {
-                int intradius = radius;
                 // Formulas for r cubed, and the volume.
-                double rCubed = (intradius * intradius * intradius);
-                double volume = (4.0 / 3.0) * Math.PI * rCubed / 2;
+                double volume = (4.0 / 3.0) * Math.PI * Math.Pow(radius, 3) / 2;
                 return volume;
             }
         }
-
         // Part 3 Area of Triangle implementation here.
         static double AreaOfTriangle(int sideOne, int sideTwo, int sideThree)
         {
             checked
             {
-                var a = sideOne;
-                var b = sideTwo;
-                var c = sideThree;
-                double p = (a + b + c) / 2;
-                double triangleArea = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+                double p = (sideOne + sideTwo + sideThree) / 2;
+                double triangleArea = Math.Sqrt(p * (p - sideOne) * (p - sideTwo) * (p - sideThree));
                 return triangleArea;
             }
         }
-
         // Part 4 Solving a quadratic equation.
         static double QuadraticFormula(int a, int b, int c)
         {
             checked
             {
                 var inTheSquareRoot = Math.Pow((double)b, 2) + (-4.0 * (double)a * (double)c);
-
-               
-                    if (inTheSquareRoot < 0)
-                    {
-                        Console.WriteLine("There are no real solutions");
-                    }
-                    else
-                    {
-
-                        double positive_num = ((double)-b) + Math.Sqrt(inTheSquareRoot);
-                        double negative_num = ((double)-b) - Math.Sqrt(inTheSquareRoot);
-                        double denominator = 2.0 * (double)a;
-                        var postiveAns = positive_num / denominator;
-                        var negativeAns = negative_num / denominator;
-
-
-                        Console.WriteLine($"\nThe positive solution is {postiveAns}");
-                        Console.WriteLine($"\nThe negative solution is {negativeAns}");
-
-                    }
                 
+                 if (inTheSquareRoot < 0)
+                 {
+                     Console.WriteLine("There are no real solutions");
+                 }
+                 else
+                 {
+                     double positive_num = ((double)-b) + Math.Sqrt(inTheSquareRoot);
+                     double negative_num = ((double)-b) - Math.Sqrt(inTheSquareRoot);
+                     double denominator = 2.0 * (double)a;
+                     Console.WriteLine($"\nThe positive solution is {positive_num / denominator}");
+                     Console.WriteLine($"\nThe negative solution is {negative_num / denominator}");
+                 }               
                 return a;
             }
         }
-
-
     }
 }
     
