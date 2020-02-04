@@ -8,14 +8,8 @@ namespace MathFormulas
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Wei's math formula calculator! ");
-            Console.WriteLine("\nPlease select from the following.");
-            Console.WriteLine("\nI want to...");
-            Console.WriteLine("\n(1)Calculate the circumference and Area of the circle given the radius");
-            Console.WriteLine("(2)Calculate the volume of the hemisphere given the radius");
-            Console.WriteLine("(3)Calculate the Area of the triangle given the length of the sides");
-            Console.WriteLine("(4)Solve a quadratic equation");
-            Console.WriteLine("\nPlease press type the corresponding letter and press enter!");
+            EntryText();
+
             try
             {
                 var userSelection = InitialInputValue();
@@ -24,7 +18,7 @@ namespace MathFormulas
                 {
                     Console.WriteLine("You chose to calculate the circumference and area of the circle.");
                     Console.WriteLine("We now need a number from you for the radius");
-                    int circleInput = ValidateUserInput();
+                    int circleInput = ValidateUserInput();                    
                     Console.WriteLine($"The Area of the circle is: {AreaOfCircle(circleInput)}");
                     Console.WriteLine($"The circumference of the circle is {CircleCircumference(circleInput)}");
                 }
@@ -147,7 +141,7 @@ namespace MathFormulas
         {
             checked
             {
-                double area = Math.PI * (Math.Pow(radius, 2));
+                double area = Math.PI * (radius * radius);
                 return area;
             }
         }
@@ -156,7 +150,6 @@ namespace MathFormulas
         {
             checked
             {
-                // Formulas for r cubed, and the volume.
                 double volume = (4.0 / 3.0) * Math.PI * Math.Pow(radius, 3) / 2;
                 return volume;
             }
@@ -166,7 +159,7 @@ namespace MathFormulas
         {
             checked
             {
-                double p = (sideOne + sideTwo + sideThree) / 2;
+                double p = (sideOne + sideTwo + sideThree) / 2.0;
                 double triangleArea = Math.Sqrt(p * (p - sideOne) * (p - sideTwo) * (p - sideThree));
                 return triangleArea;
             }
@@ -176,7 +169,7 @@ namespace MathFormulas
         {
             checked
             {
-                var inTheSquareRoot = Math.Pow((double)b, 2) + (-4.0 * (double)a * (double)c);
+                var inTheSquareRoot = Math.Pow(b, 2.0) + (-4.0 * a * c);
                 
                  if (inTheSquareRoot < 0)
                  {
@@ -184,14 +177,26 @@ namespace MathFormulas
                  }
                  else
                  {
-                     double positive_num = ((double)-b) + Math.Sqrt(inTheSquareRoot);
-                     double negative_num = ((double)-b) - Math.Sqrt(inTheSquareRoot);
-                     double denominator = 2.0 * (double)a;
+                     double positive_num = -b + Math.Sqrt(inTheSquareRoot);
+                     double negative_num = -b - Math.Sqrt(inTheSquareRoot);
+                     double denominator = 2.0 * a;
                      Console.WriteLine($"\nThe positive solution is {positive_num / denominator}");
                      Console.WriteLine($"\nThe negative solution is {negative_num / denominator}");
-                 }               
+                 }
                 return a;
             }
+        }
+
+        static void EntryText()
+        {
+            Console.WriteLine("Welcome to Wei's math formula calculator! ");
+            Console.WriteLine("\nPlease select from the following.");
+            Console.WriteLine("\nI want to...");
+            Console.WriteLine("\n(1)Calculate the circumference and Area of the circle given the radius");
+            Console.WriteLine("(2)Calculate the volume of the hemisphere given the radius");
+            Console.WriteLine("(3)Calculate the Area of the triangle given the length of the sides");
+            Console.WriteLine("(4)Solve a quadratic equation");
+            Console.WriteLine("\nPlease press type the corresponding letter and press enter!");
         }
     }
 }
