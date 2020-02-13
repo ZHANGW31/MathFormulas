@@ -4,12 +4,11 @@ namespace MathFormulas
 {
     using System;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             EntryText();
-
             try
             {
                 var userSelection = InitialInputValue();
@@ -46,10 +45,8 @@ namespace MathFormulas
                     int valueB = ValidateUserInput();
                     Console.WriteLine("Please enter a value for c");
                     int valueC = ValidateUserInput();
-
                     QuadraticFormula(valueA, valueB, valueC);
                 }
-
             } catch (Exception exceptionMessage)
             {
                 Console.WriteLine(exceptionMessage);
@@ -59,7 +56,7 @@ namespace MathFormulas
                 Console.WriteLine("\nExiting Application");
             }
         }
-        static int InitialInputValue()
+        public static int InitialInputValue()
         {
             Console.Write("\nPlease enter your choice: ");
             bool isValid = false;
@@ -99,7 +96,7 @@ namespace MathFormulas
             return output;
         }
         //This method tests to user input and validates that it is an integer
-        static int ValidateUserInput()
+        public static int ValidateUserInput()
         {
             Console.Write("\nYour Value: ");
             bool isValid = false;
@@ -128,7 +125,7 @@ namespace MathFormulas
             }
             return output;
         }
-        static double CircleCircumference(int radius)
+        public static double CircleCircumference(int radius)
         {
             checked
             {
@@ -137,7 +134,7 @@ namespace MathFormulas
             }
         }
         //Part 1 Area of Circle implementation here.
-        static double AreaOfCircle(int radius)
+        public static double AreaOfCircle(int radius)
         {
             checked
             {
@@ -146,7 +143,7 @@ namespace MathFormulas
             }
         }
         // Part 2 Volume of Hemisphere implementation here.
-        static double Hemisphere(int radius)
+        public static double Hemisphere(int radius)
         {
             checked
             {
@@ -155,7 +152,7 @@ namespace MathFormulas
             }
         }
         // Part 3 Area of Triangle implementation here.
-        static double AreaOfTriangle(int sideOne, int sideTwo, int sideThree)
+        public static double AreaOfTriangle(int sideOne, int sideTwo, int sideThree)
         {
             checked
             {
@@ -165,7 +162,7 @@ namespace MathFormulas
             }
         }
         // Part 4 Solving a quadratic equation.
-        static double QuadraticFormula(int a, int b, int c)
+        public static double QuadraticFormula(int a, int b, int c)
         {
             checked
             {
@@ -187,7 +184,7 @@ namespace MathFormulas
             }
         }
 
-        static void EntryText()
+        public static void EntryText()
         {
             Console.WriteLine("Welcome to Wei's math formula calculator! ");
             Console.WriteLine("\nPlease select from the following.");
