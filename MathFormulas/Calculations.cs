@@ -48,7 +48,6 @@ namespace MathFormulas
             checked
             {
                 var inTheSquareRoot = Math.Pow(b, 2.0) + (-4.0 * a * c);
-
                 if (inTheSquareRoot < 0)
                 {
                     Console.WriteLine("There are no real solutions");

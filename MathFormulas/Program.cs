@@ -7,7 +7,7 @@ namespace MathFormulas
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args) //Entry point, Writelines into the console how to use this application.
         {
             Console.WriteLine("Welcome to Wei's math formula calculator! ");
             Console.WriteLine("\nPlease select from the following.");
@@ -20,9 +20,9 @@ namespace MathFormulas
 
             try
             {
-                var userSelection = UserInputClass.InitialInputValue();
+                var userSelection = UserInputClass.InitialInputValue(); //user input validation
 
-                if (userSelection == 1)
+                if (userSelection == 1) 
                 {
                     Console.WriteLine("You chose to calculate the circumference and area of the circle.");
                     Console.WriteLine("We now need a number from you for the radius");
@@ -65,6 +65,7 @@ namespace MathFormulas
                 Console.WriteLine("\nExiting Application");
             }
         }
+       
     }
 }
     
